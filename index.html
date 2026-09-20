@@ -4,259 +4,828 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compliance-Upgrade: Decision & Transfer Practice</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f5f7;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .site-header {
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 24px 6%;
+    }
+
+    .site-header h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+    }
+
+    .site-header p {
+      margin: 0;
+      color: #666;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .header-meta span {
+      background: #f0f1f3;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .timer-box {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 25px;
+    }
+
+    .warning {
+      background: #fff7df;
+      border: 1px solid #e3c56d;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 25px;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    label {
+      display: block;
+      background: #f7f7f8;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 12px 0;
+      cursor: pointer;
+    }
+
+    label:hover {
+      background: #eeeeef;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 13px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #222;
+      color: white;
+      margin-top: 18px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .summary-grid > div {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 18px;
+      background: #fafafa;
+    }
+
+    .summary-grid p {
+      margin-bottom: 0;
+      font-size: 18px;
+    }
+
+    @media (max-width: 650px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <header class="site-header">
-    <div>
-      <h1>Compliance-Upgrade: Decision & Transfer Practice</h1>
-      <p>Money Lens: Zero-Hardware Prototype</p>
+<header class="site-header">
+  <h1>Compliance-Upgrade: Decision &amp; Transfer Practice</h1>
+  <p>Money Lens: Zero-Hardware Prototype</p>
+
+  <div class="header-meta">
+    <span>Complements physical earthquake drills</span>
+    <span>Standard web browser</span>
+    <span>Target time: &lt; 3 minutes</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="timer-box">
+    Session Duration: <strong id="timer">00:00</strong>
+  </div>
+
+  <!-- OVERVIEW -->
+
+  <section id="overview" class="screen active">
+
+    <div class="card">
+
+      <div class="warning">
+        <strong>Important:</strong>
+        This is a simulated decision exercise. It does not measure
+        physical evacuation behavior, panic, freezing, or total earthquake preparedness.
+      </div>
+
+      <h2>Overview &amp; Institutional Context</h2>
+
+      <p>
+        Traditional compliance records whether people complete physical drills.
+        This prototype adds a narrow decision test: can a person recognize
+        when a validated safety cue means the rehearsed sequence should be interrupted?
+      </p>
+
+      <h3>What this prototype measures</h3>
+
+      <ul>
+        <li>Recognition of a validated safety cue</li>
+        <li>Reassessment of a rehearsed sequence</li>
+        <li>Transfer of that judgment to a new scenario</li>
+      </ul>
+
+      <p>
+        The physical earthquake drill is still required.
+        This simulation complements that process rather than replacing it.
+      </p>
+
+      <button id="startAssessment" type="button">
+        Start Micro-Assessment
+      </button>
+
     </div>
 
-    <div class="header-meta">
-      <span>Complements physical earthquake drills</span>
-      <span>Standard web browser</span>
-      <span>Target time: &lt; 3 minutes</span>
+  </section>
+
+
+  <!-- SCENARIO 1 -->
+
+  <section id="scenario1" class="screen">
+
+    <div class="card">
+
+      <h2>Scenario 1: Reassess the Rehearsed Sequence</h2>
+
+      <p>
+        You are following the school's rehearsed earthquake procedure.
+        While moving through the building, you notice sparks and smoke
+        coming from an electrical junction box near the planned route.
+      </p>
+
+      <p><strong>What should you do?</strong></p>
+
+      <form id="scenario1Form">
+
+        <label>
+          <input type="radio" name="scenario1" value="continue">
+          Continue the rehearsed sequence without changing the plan.
+        </label>
+
+        <label>
+          <input type="radio" name="scenario1" value="reassess">
+          Pause and reassess because the safety cue may make the rehearsed route unsafe.
+        </label>
+
+        <label>
+          <input type="radio" name="scenario1" value="hesitate">
+          Stop without assessing the cue or deciding what evidence matters.
+        </label>
+
+        <button id="submitScenario1" type="button">
+          Submit Decision
+        </button>
+
+      </form>
+
     </div>
-  </header>
 
-  <main>
+  </section>
 
-    <div class="timer-box">
-      Session Duration: <strong id="timer">00:00</strong>
+
+  <!-- SCENARIO 1 FEEDBACK -->
+
+  <section id="scenario1Feedback" class="screen">
+
+    <div class="card">
+
+      <h2 id="scenario1FeedbackTitle"></h2>
+
+      <p id="scenario1FeedbackText"></p>
+
+      <button id="continueToScenario2" type="button">
+        Continue to Transfer Scenario
+      </button>
+
     </div>
 
-    <!-- OVERVIEW -->
-    <section id="overview" class="screen active">
+  </section>
 
-      <div class="card">
-        <div class="warning">
-          <strong>Important:</strong>
-          This is a simulated decision exercise. It does not measure
-          physical evacuation behavior, panic, freezing, or total earthquake preparedness.
+
+  <!-- SCENARIO 2 -->
+
+  <section id="scenario2" class="screen">
+
+    <div class="card">
+
+      <h2>Scenario 2: Transfer the Judgment</h2>
+
+      <p>
+        You are now in a different part of the school.
+        The details are different, but the underlying decision is similar.
+      </p>
+
+      <p>
+        A cracked section of masonry is hanging above the exit you were
+        planning to use.
+      </p>
+
+      <p><strong>What should you do?</strong></p>
+
+      <form id="scenario2Form">
+
+        <label>
+          <input type="radio" name="scenario2" value="continue">
+          Continue using the rehearsed route automatically.
+        </label>
+
+        <label>
+          <input type="radio" name="scenario2" value="transfer">
+          Recognize the validated hazard and reassess the route before continuing.
+        </label>
+
+        <label>
+          <input type="radio" name="scenario2" value="hesitate">
+          Stop without using the hazard information to make a decision.
+        </label>
+
+        <button id="submitScenario2" type="button">
+          Submit Decision
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- SCENARIO 2 FEEDBACK -->
+
+  <section id="scenario2Feedback" class="screen">
+
+    <div class="card">
+
+      <h2 id="scenario2FeedbackTitle"></h2>
+
+      <p id="scenario2FeedbackText"></p>
+
+      <button id="finishAssessment" type="button">
+        View Results
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- SUMMARY -->
+
+  <section id="summary" class="screen">
+
+    <div class="card">
+
+      <h2>Micro-Assessment Summary</h2>
+
+      <div class="summary-grid">
+
+        <div>
+          <strong>Session duration</strong>
+          <p id="summaryDuration">00:00</p>
         </div>
 
-        <h2>Overview &amp; Institutional Context</h2>
-
-        <p>
-          Traditional compliance records whether people complete physical drills.
-          This prototype adds a narrow decision test: can a person recognize
-          when a validated safety cue means the rehearsed sequence should be interrupted?
-        </p>
-
-        <h3>What this prototype measures</h3>
-
-        <ul>
-          <li>Recognition of a validated safety cue</li>
-          <li>Reassessment of a rehearsed sequence</li>
-          <li>Transfer of that judgment to a new scenario</li>
-        </ul>
-
-        <p>
-          The physical earthquake drill is still required.
-          This simulation complements that process rather than replacing it.
-        </p>
-
-        <button id="startAssessment" type="button">
-          Start Micro-Assessment
-        </button>
-      </div>
-
-    </section>
-
-
-    <!-- SCENARIO 1 -->
-    <section id="scenario1" class="screen">
-
-      <div class="card">
-
-        <h2>Scenario 1: Reassess the Rehearsed Sequence</h2>
-
-        <p>
-          You are following the school's rehearsed earthquake procedure.
-          While moving through the building, you notice sparks and smoke
-          coming from an electrical junction box near the planned route.
-        </p>
-
-        <p>
-          What should you do?
-        </p>
-
-        <form id="scenario1Form">
-
-          <label>
-            <input type="radio" name="scenario1" value="continue">
-            Continue the rehearsed sequence without changing the plan.
-          </label>
-
-          <label>
-            <input type="radio" name="scenario1" value="reassess">
-            Pause and reassess because the safety cue may make the rehearsed route unsafe.
-          </label>
-
-          <label>
-            <input type="radio" name="scenario1" value="hesitate">
-            Stop without assessing the cue or deciding what evidence matters.
-          </label>
-
-          <button id="submitScenario1" type="button">
-            Submit Decision
-          </button>
-
-        </form>
-
-      </div>
-
-    </section>
-
-
-    <!-- SCENARIO 1 FEEDBACK -->
-    <section id="scenario1Feedback" class="screen">
-
-      <div class="card">
-
-        <h2 id="scenario1FeedbackTitle"></h2>
-
-        <p id="scenario1FeedbackText"></p>
-
-        <button id="continueToScenario2" type="button">
-          Continue to Transfer Scenario
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- SCENARIO 2 -->
-    <section id="scenario2" class="screen">
-
-      <div class="card">
-
-        <h2>Scenario 2: Transfer the Judgment</h2>
-
-        <p>
-          You are now in a different part of the school.
-          The details are different, but the underlying decision is similar.
-        </p>
-
-        <p>
-          A cracked section of masonry is hanging above the exit you were
-          planning to use.
-        </p>
-
-        <p>
-          What should you do?
-        </p>
-
-        <form id="scenario2Form">
-
-          <label>
-            <input type="radio" name="scenario2" value="continue">
-            Continue using the rehearsed route automatically.
-          </label>
-
-          <label>
-            <input type="radio" name="scenario2" value="transfer">
-            Recognize the validated hazard and reassess the route before continuing.
-          </label>
-
-          <label>
-            <input type="radio" name="scenario2" value="hesitate">
-            Stop without using the hazard information to make a decision.
-          </label>
-
-          <button id="submitScenario2" type="button">
-            Submit Decision
-          </button>
-
-        </form>
-
-      </div>
-
-    </section>
-
-
-    <!-- SCENARIO 2 FEEDBACK -->
-    <section id="scenario2Feedback" class="screen">
-
-      <div class="card">
-
-        <h2 id="scenario2FeedbackTitle"></h2>
-
-        <p id="scenario2FeedbackText"></p>
-
-        <button id="finishAssessment" type="button">
-          View Results
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- SUMMARY -->
-    <section id="summary" class="screen">
-
-      <div class="card">
-
-        <h2>Micro-Assessment Summary</h2>
-
-        <div class="summary-grid">
-
-          <div>
-            <strong>Session duration</strong>
-            <p id="summaryDuration">00:00</p>
-          </div>
-
-          <div>
-            <strong>Scenario 1</strong>
-            <p id="summaryScenario1">-</p>
-          </div>
-
-          <div>
-            <strong>Scenario 2</strong>
-            <p id="summaryScenario2">-</p>
-          </div>
-
-          <div>
-            <strong>Transfer demonstrated</strong>
-            <p id="summaryTransfer">-</p>
-          </div>
-
-          <div>
-            <strong>Decision score</strong>
-            <p id="summaryScore">-</p>
-          </div>
-
-          <div>
-            <strong>Time target</strong>
-            <p id="summaryTarget">-</p>
-          </div>
-
+        <div>
+          <strong>Scenario 1</strong>
+          <p id="summaryScenario1">-</p>
         </div>
 
-        <div class="warning">
-          <strong>Interpretation:</strong>
-          These results represent simulated decisions only.
-          They do not prove physical evacuation behavior or total earthquake preparedness.
-          The physical drill is still required.
+        <div>
+          <strong>Scenario 2</strong>
+          <p id="summaryScenario2">-</p>
         </div>
 
-        <button id="restartAssessment" type="button">
-          Restart Assessment
-        </button>
+        <div>
+          <strong>Transfer demonstrated</strong>
+          <p id="summaryTransfer">-</p>
+        </div>
+
+        <div>
+          <strong>Decision score</strong>
+          <p id="summaryScore">-</p>
+        </div>
+
+        <div>
+          <strong>Time target</strong>
+          <p id="summaryTarget">-</p>
+        </div>
 
       </div>
 
-    </section>
+      <div class="warning">
+        <strong>Interpretation:</strong>
+        These results represent simulated decisions only.
+        They do not prove physical evacuation behavior or total earthquake preparedness.
+        The physical drill is still required.
+      </div>
 
-  </main>
+      <button id="restartAssessment" type="button">
+        Restart Assessment
+      </button>
 
-  <!-- THIS CONNECTS THE JAVASCRIPT TO THE PAGE -->
-  <script src="script.js"></script>
+    </div>
+
+  </section>
+
+</main>
+
+
+<script>
+
+  let startTime = null;
+  let timerInterval = null;
+  let endTime = null;
+
+  const state = {
+    scenario1: {
+      answer: null,
+      correct: false
+    },
+
+    scenario2: {
+      answer: null,
+      correct: false
+    }
+  };
+
+
+  function startTimer() {
+
+    startTime = Date.now();
+    endTime = null;
+
+    clearInterval(timerInterval);
+
+    timerInterval = setInterval(function() {
+      updateTimer();
+    }, 1000);
+
+    updateTimer();
+  }
+
+
+  function stopTimer() {
+
+    if (startTime) {
+      endTime = Date.now();
+    }
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    updateTimer();
+  }
+
+
+  function getElapsedSeconds() {
+
+    if (!startTime) {
+      return 0;
+    }
+
+    const end = endTime || Date.now();
+
+    return Math.floor((end - startTime) / 1000);
+  }
+
+
+  function formatTime(seconds) {
+
+    const minutes = Math.floor(seconds / 60);
+
+    const remainingSeconds = seconds % 60;
+
+    return String(minutes).padStart(2, "0") +
+      ":" +
+      String(remainingSeconds).padStart(2, "0");
+  }
+
+
+  function updateTimer() {
+
+    const timerElement =
+      document.getElementById("timer");
+
+    if (timerElement) {
+
+      timerElement.textContent =
+        formatTime(getElapsedSeconds());
+
+    }
+  }
+
+
+  function showScreen(screenId) {
+
+    document.querySelectorAll(".screen").forEach(function(screen) {
+
+      screen.classList.remove("active");
+
+    });
+
+    const target =
+      document.getElementById(screenId);
+
+    if (target) {
+
+      target.classList.add("active");
+
+    }
+
+    window.scrollTo(0, 0);
+  }
+
+
+  function startAssessment() {
+
+    startTimer();
+
+    state.scenario1.answer = null;
+    state.scenario1.correct = false;
+
+    state.scenario2.answer = null;
+    state.scenario2.correct = false;
+
+    document
+      .getElementById("scenario1Form")
+      .reset();
+
+    document
+      .getElementById("scenario2Form")
+      .reset();
+
+    showScreen("scenario1");
+  }
+
+
+  function submitScenario1() {
+
+    const selected =
+      document.querySelector(
+        'input[name="scenario1"]:checked'
+      );
+
+    if (!selected) {
+
+      alert(
+        "Please select an answer before continuing."
+      );
+
+      return;
+    }
+
+    state.scenario1.answer =
+      selected.value;
+
+    state.scenario1.correct =
+      selected.value === "reassess";
+
+    const title =
+      document.getElementById(
+        "scenario1FeedbackTitle"
+      );
+
+    const text =
+      document.getElementById(
+        "scenario1FeedbackText"
+      );
+
+    if (state.scenario1.correct) {
+
+      title.textContent =
+        "Good decision";
+
+      text.textContent =
+        "You recognized the validated safety cue and reassessed the rehearsed sequence before continuing.";
+
+    } else {
+
+      title.textContent =
+        "Reassess the situation";
+
+      text.textContent =
+        "The scenario included a validated safety cue. The safer decision was to pause and reassess instead of automatically continuing the rehearsed sequence.";
+
+    }
+
+    showScreen("scenario1Feedback");
+  }
+
+
+  function continueToScenario2() {
+
+    document
+      .getElementById("scenario2Form")
+      .reset();
+
+    state.scenario2.answer = null;
+
+    state.scenario2.correct = false;
+
+    showScreen("scenario2");
+  }
+
+
+  function submitScenario2() {
+
+    const selected =
+      document.querySelector(
+        'input[name="scenario2"]:checked'
+      );
+
+    if (!selected) {
+
+      alert(
+        "Please select an answer before continuing."
+      );
+
+      return;
+    }
+
+    state.scenario2.answer =
+      selected.value;
+
+    state.scenario2.correct =
+      selected.value === "transfer";
+
+    const title =
+      document.getElementById(
+        "scenario2FeedbackTitle"
+      );
+
+    const text =
+      document.getElementById(
+        "scenario2FeedbackText"
+      );
+
+    if (state.scenario2.correct) {
+
+      title.textContent =
+        "Transfer recognized";
+
+      text.textContent =
+        "You applied the same reassessment judgment to a different scenario.";
+
+    } else {
+
+      title.textContent =
+        "Look for the safety cue";
+
+      text.textContent =
+        "This new scenario contains a validated hazard that conflicts with the rehearsed route. The decision should be reassessed.";
+
+    }
+
+    showScreen("scenario2Feedback");
+  }
+
+
+  function finishAssessment() {
+
+    stopTimer();
+
+    updateSummary();
+
+    showScreen("summary");
+  }
+
+
+  function updateSummary() {
+
+    const totalSeconds =
+      getElapsedSeconds();
+
+
+    document.getElementById(
+      "summaryDuration"
+    ).textContent =
+      formatTime(totalSeconds);
+
+
+    document.getElementById(
+      "summaryScenario1"
+    ).textContent =
+      state.scenario1.correct
+        ? "Correct reassessment"
+        : "Did not reassess";
+
+
+    document.getElementById(
+      "summaryScenario2"
+    ).textContent =
+      state.scenario2.correct
+        ? "Correct transfer"
+        : "Did not transfer";
+
+
+    document.getElementById(
+      "summaryTransfer"
+    ).textContent =
+      state.scenario1.correct &&
+      state.scenario2.correct
+        ? "Yes"
+        : "Not demonstrated";
+
+
+    const score =
+      Number(state.scenario1.correct) +
+      Number(state.scenario2.correct);
+
+
+    document.getElementById(
+      "summaryScore"
+    ).textContent =
+      score + "/2 decisions demonstrated";
+
+
+    document.getElementById(
+      "summaryTarget"
+    ).textContent =
+      totalSeconds < 180
+        ? "Within the sub-3-minute target."
+        : "Above the sub-3-minute target.";
+  }
+
+
+  function restartAssessment() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    startTime = null;
+
+    endTime = null;
+
+
+    state.scenario1.answer = null;
+
+    state.scenario1.correct = false;
+
+
+    state.scenario2.answer = null;
+
+    state.scenario2.correct = false;
+
+
+    document
+      .getElementById("scenario1Form")
+      .reset();
+
+
+    document
+      .getElementById("scenario2Form")
+      .reset();
+
+
+    document.getElementById(
+      "timer"
+    ).textContent = "00:00";
+
+
+    showScreen("overview");
+  }
+
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+      document
+        .getElementById("startAssessment")
+        .addEventListener(
+          "click",
+          startAssessment
+        );
+
+
+      document
+        .getElementById("submitScenario1")
+        .addEventListener(
+          "click",
+          submitScenario1
+        );
+
+
+      document
+        .getElementById("continueToScenario2")
+        .addEventListener(
+          "click",
+          continueToScenario2
+        );
+
+
+      document
+        .getElementById("submitScenario2")
+        .addEventListener(
+          "click",
+          submitScenario2
+        );
+
+
+      document
+        .getElementById("finishAssessment")
+        .addEventListener(
+          "click",
+          finishAssessment
+        );
+
+
+      document
+        .getElementById("restartAssessment")
+        .addEventListener(
+          "click",
+          restartAssessment
+        );
+
+    }
+  );
+
+</script>
 
 </body>
 </html>
