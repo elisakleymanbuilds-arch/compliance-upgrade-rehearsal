@@ -47,6 +47,7 @@ function getElapsedSeconds() {
   if (!startTime) return 0;
 
   const end = endTime || Date.now();
+
   return Math.floor((end - startTime) / 1000);
 }
 
@@ -63,7 +64,9 @@ function updateTimer() {
   const timerElement = document.getElementById("timer");
 
   if (timerElement) {
-    timerElement.textContent = formatTime(getElapsedSeconds());
+    timerElement.textContent = formatTime(
+      getElapsedSeconds()
+    );
   }
 }
 
@@ -101,8 +104,11 @@ function startAssessment() {
   state.scenario2.answer = null;
   state.scenario2.correct = false;
 
-  const scenario1Form = document.getElementById("scenario1Form");
-  const scenario2Form = document.getElementById("scenario2Form");
+  const scenario1Form =
+    document.getElementById("scenario1Form");
+
+  const scenario2Form =
+    document.getElementById("scenario2Form");
 
   if (scenario1Form) {
     scenario1Form.reset();
@@ -133,21 +139,23 @@ function submitScenario1() {
 
   // Validated safety cue:
   // sparks and smoke from an electrical junction box.
-  // The correct decision is to pause and reassess.
 
-  state.scenario1.correct = selected.value === "reassess";
+  state.scenario1.correct =
+    selected.value === "reassess";
 
   showScenario1Feedback();
 }
 
 function showScenario1Feedback() {
-  const feedbackTitle = document.getElementById(
-    "scenario1FeedbackTitle"
-  );
+  const feedbackTitle =
+    document.getElementById(
+      "scenario1FeedbackTitle"
+    );
 
-  const feedbackText = document.getElementById(
-    "scenario1FeedbackText"
-  );
+  const feedbackText =
+    document.getElementById(
+      "scenario1FeedbackText"
+    );
 
   if (!feedbackTitle || !feedbackText) {
     showScreen("scenario2");
@@ -160,7 +168,8 @@ function showScenario1Feedback() {
     feedbackText.textContent =
       "You recognized the validated safety cue and reassessed the rehearsed sequence before continuing.";
   } else {
-    feedbackTitle.textContent = "Reassess the situation";
+    feedbackTitle.textContent =
+      "Reassess the situation";
 
     feedbackText.textContent =
       "The scenario included a validated safety cue. The safer decision was to pause and reassess instead of automatically continuing the rehearsed sequence.";
@@ -174,21 +183,22 @@ function showScenario1Feedback() {
 // -------------------------
 
 function continueToScenario2() {
-  // Bug fix:
   // Reset Scenario 2 before the transfer scenario begins.
-  // This prevents a previous answer from carrying over.
 
-  const scenario2Form = document.getElementById("scenario2Form");
+  const scenario2Form =
+    document.getElementById("scenario2Form");
 
   if (scenario2Form) {
     scenario2Form.reset();
   }
 
-  document.querySelectorAll(
-    'input[name="scenario2"]'
-  ).forEach((input) => {
-    input.checked = false;
-  });
+  document
+    .querySelectorAll(
+      'input[name="scenario2"]'
+    )
+    .forEach((input) => {
+      input.checked = false;
+    });
 
   state.scenario2.answer = null;
   state.scenario2.correct = false;
@@ -209,26 +219,26 @@ function submitScenario2() {
   state.scenario2.answer = selected.value;
 
   /*
-    Scenario 2 uses different surface details but the same
-    underlying conflict.
-
-    The correct decision is to recognize the validated hazard
-    and reassess the rehearsed route.
+    Scenario 2 uses different surface details
+    but the same underlying decision conflict.
   */
 
-  state.scenario2.correct = selected.value === "transfer";
+  state.scenario2.correct =
+    selected.value === "transfer";
 
   showScenario2Feedback();
 }
 
 function showScenario2Feedback() {
-  const feedbackTitle = document.getElementById(
-    "scenario2FeedbackTitle"
-  );
+  const feedbackTitle =
+    document.getElementById(
+      "scenario2FeedbackTitle"
+    );
 
-  const feedbackText = document.getElementById(
-    "scenario2FeedbackText"
-  );
+  const feedbackText =
+    document.getElementById(
+      "scenario2FeedbackText"
+    );
 
   if (!feedbackTitle || !feedbackText) {
     finishAssessment();
@@ -236,12 +246,14 @@ function showScenario2Feedback() {
   }
 
   if (state.scenario2.correct) {
-    feedbackTitle.textContent = "Transfer recognized";
+    feedbackTitle.textContent =
+      "Transfer recognized";
 
     feedbackText.textContent =
       "You applied the same reassessment judgment to a different scenario.";
   } else {
-    feedbackTitle.textContent = "Look for the safety cue";
+    feedbackTitle.textContent =
+      "Look for the safety cue";
 
     feedbackText.textContent =
       "This new scenario contains a validated hazard that conflicts with the rehearsed route. The decision should be reassessed.";
@@ -263,34 +275,46 @@ function finishAssessment() {
 }
 
 // -------------------------
-// SUMMARY
+// BUYER / INSTITUTION SUMMARY
 // -------------------------
 
 function updateSummary() {
-  const totalSeconds = getElapsedSeconds();
+  const totalSeconds =
+    getElapsedSeconds();
 
-  const durationElement = document.getElementById(
-    "summaryDuration"
-  );
+  const durationElement =
+    document.getElementById(
+      "summaryDuration"
+    );
 
-  const scenario1Element = document.getElementById(
-    "summaryScenario1"
-  );
+  const scenario1Element =
+    document.getElementById(
+      "summaryScenario1"
+    );
 
-  const scenario2Element = document.getElementById(
-    "summaryScenario2"
-  );
+  const scenario2Element =
+    document.getElementById(
+      "summaryScenario2"
+    );
 
-  const transferElement = document.getElementById(
-    "summaryTransfer"
-  );
+  const transferElement =
+    document.getElementById(
+      "summaryTransfer"
+    );
 
-  const targetElement = document.getElementById(
-    "summaryTarget"
-  );
+  const targetElement =
+    document.getElementById(
+      "summaryTarget"
+    );
+
+  const scoreElement =
+    document.getElementById(
+      "summaryScore"
+    );
 
   if (durationElement) {
-    durationElement.textContent = formatTime(totalSeconds);
+    durationElement.textContent =
+      formatTime(totalSeconds);
   }
 
   if (scenario1Element) {
@@ -313,6 +337,15 @@ function updateSummary() {
       state.scenario2.correct
         ? "Yes"
         : "Not demonstrated";
+  }
+
+  if (scoreElement) {
+    const score =
+      Number(state.scenario1.correct) +
+      Number(state.scenario2.correct);
+
+    scoreElement.textContent =
+      `${score}/2 decisions demonstrated`;
   }
 
   if (targetElement) {
@@ -340,13 +373,15 @@ function restartAssessment() {
   state.scenario2.answer = null;
   state.scenario2.correct = false;
 
-  const scenario1Form = document.getElementById(
-    "scenario1Form"
-  );
+  const scenario1Form =
+    document.getElementById(
+      "scenario1Form"
+    );
 
-  const scenario2Form = document.getElementById(
-    "scenario2Form"
-  );
+  const scenario2Form =
+    document.getElementById(
+      "scenario2Form"
+    );
 
   if (scenario1Form) {
     scenario1Form.reset();
@@ -356,13 +391,16 @@ function restartAssessment() {
     scenario2Form.reset();
   }
 
-  document.querySelectorAll(
-    'input[name="scenario1"], input[name="scenario2"]'
-  ).forEach((input) => {
-    input.checked = false;
-  });
+  document
+    .querySelectorAll(
+      'input[name="scenario1"], input[name="scenario2"]'
+    )
+    .forEach((input) => {
+      input.checked = false;
+    });
 
-  const timerElement = document.getElementById("timer");
+  const timerElement =
+    document.getElementById("timer");
 
   if (timerElement) {
     timerElement.textContent = "00:00";
@@ -375,72 +413,81 @@ function restartAssessment() {
 // INITIALIZE
 // -------------------------
 
-document.addEventListener("DOMContentLoaded", () => {
-  const startButton = document.getElementById(
-    "startAssessment"
-  );
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+    const startButton =
+      document.getElementById(
+        "startAssessment"
+      );
 
-  const scenario1Button = document.getElementById(
-    "submitScenario1"
-  );
+    const scenario1Button =
+      document.getElementById(
+        "submitScenario1"
+      );
 
-  const continueButton = document.getElementById(
-    "continueToScenario2"
-  );
+    const continueButton =
+      document.getElementById(
+        "continueToScenario2"
+      );
 
-  const scenario2Button = document.getElementById(
-    "submitScenario2"
-  );
+    const scenario2Button =
+      document.getElementById(
+        "submitScenario2"
+      );
 
-  const finishButton = document.getElementById(
-    "finishAssessment"
-  );
+    const finishButton =
+      document.getElementById(
+        "finishAssessment"
+      );
 
-  const restartButton = document.getElementById(
-    "restartAssessment"
-  );
+    const restartButton =
+      document.getElementById(
+        "restartAssessment"
+      );
 
-  if (startButton) {
-    startButton.addEventListener(
-      "click",
-      startAssessment
-    );
+    if (startButton) {
+      startButton.addEventListener(
+        "click",
+        startAssessment
+      );
+    }
+
+    if (scenario1Button) {
+      scenario1Button.addEventListener(
+        "click",
+        submitScenario1
+      );
+    }
+
+    if (continueButton) {
+      continueButton.addEventListener(
+        "click",
+        continueToScenario2
+      );
+    }
+
+    if (scenario2Button) {
+      scenario2Button.addEventListener(
+        "click",
+        submitScenario2
+      );
+    }
+
+    if (finishButton) {
+      finishButton.addEventListener(
+        "click",
+        finishAssessment
+      );
+    }
+
+    if (restartButton) {
+      restartButton.addEventListener(
+        "click",
+        restartAssessment
+      );
+    }
+
+    showScreen("overview");
   }
-
-  if (scenario1Button) {
-    scenario1Button.addEventListener(
-      "click",
-      submitScenario1
-    );
-  }
-
-  if (continueButton) {
-    continueButton.addEventListener(
-      "click",
-      continueToScenario2
-    );
-  }
-
-  if (scenario2Button) {
-    scenario2Button.addEventListener(
-      "click",
-      submitScenario2
-    );
-  }
-
-  if (finishButton) {
-    finishButton.addEventListener(
-      "click",
-      finishAssessment
-    );
-  }
-
-  if (restartButton) {
-    restartButton.addEventListener(
-      "click",
-      restartAssessment
-    );
-  }
-
-  showScreen("overview");
-});
+);
