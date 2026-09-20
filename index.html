@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compliance-Upgrade: Decision & Transfer Practice</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,64 +12,56 @@
   <header class="site-header">
     <div>
       <h1>Compliance-Upgrade: Decision & Transfer Practice</h1>
-      <p><strong>Money Lens: Zero-Hardware Prototype</strong></p>
+      <p>Money Lens: Zero-Hardware Prototype</p>
     </div>
 
-    <div class="header-info">
+    <div class="header-meta">
       <span>Complements physical earthquake drills</span>
       <span>Standard web browser</span>
       <span>Target time: &lt; 3 minutes</span>
     </div>
   </header>
 
-  <main class="container">
+  <main>
 
     <div class="timer-box">
-      <span>Session Duration:</span>
-      <strong id="timer">00:00</strong>
+      Session Duration: <strong id="timer">00:00</strong>
     </div>
 
     <!-- OVERVIEW -->
     <section id="overview" class="screen active">
 
-      <div class="warning-box">
-        <div class="warning-icon">⚠️</div>
-
-        <div>
-          <h2>Simulated Decision Practice Only</h2>
-
-          <p>
-            This tool measures simulated digital decisions. It does not
-            predict or claim to measure real-world physical behavior,
-            panic, freezing, or total earthquake preparedness.
-            It complements physical drills and does not replace them.
-          </p>
-        </div>
-      </div>
-
       <div class="card">
+        <div class="warning">
+          <strong>Important:</strong>
+          This is a simulated decision exercise. It does not measure
+          physical evacuation behavior, panic, freezing, or total earthquake preparedness.
+        </div>
 
-        <p class="eyebrow">Overview &amp; Institutional Context</p>
-
-        <h2>Measure Reassessment Judgment &amp; Transfer</h2>
-
-        <p>
-          Traditional compliance records attendance at physical drills,
-          but cannot safely test whether staff persist on an evacuation
-          route when a valid safety hazard contradicts the rehearsed plan.
-        </p>
+        <h2>Overview &amp; Institutional Context</h2>
 
         <p>
-          This 3-minute digital check tests one specific judgment:
-          recognizing when a validated hazard requires pausing and
-          redirecting, and tests if that judgment transfers to a
-          different situation.
+          Traditional compliance records whether people complete physical drills.
+          This prototype adds a narrow decision test: can a person recognize
+          when a validated safety cue means the rehearsed sequence should be interrupted?
         </p>
 
-        <button id="startAssessment" class="primary-button">
+        <h3>What this prototype measures</h3>
+
+        <ul>
+          <li>Recognition of a validated safety cue</li>
+          <li>Reassessment of a rehearsed sequence</li>
+          <li>Transfer of that judgment to a new scenario</li>
+        </ul>
+
+        <p>
+          The physical earthquake drill is still required.
+          This simulation complements that process rather than replacing it.
+        </p>
+
+        <button id="startAssessment" type="button">
           Start Micro-Assessment
         </button>
-
       </div>
 
     </section>
@@ -81,68 +72,36 @@
 
       <div class="card">
 
-        <p class="eyebrow">Scenario 1 of 2</p>
-
-        <h2>Rehearsed Route + New Safety Cue</h2>
+        <h2>Scenario 1: Reassess the Rehearsed Sequence</h2>
 
         <p>
-          You are following the rehearsed evacuation sequence after an
-          earthquake. While moving toward the planned exit, you see
-          sparks and smoke coming from an electrical junction box near
-          the route.
+          You are following the school's rehearsed earthquake procedure.
+          While moving through the building, you notice sparks and smoke
+          coming from an electrical junction box near the planned route.
         </p>
 
-        <p class="question">
+        <p>
           What should you do?
         </p>
 
         <form id="scenario1Form">
 
-          <label class="option">
-            <input
-              type="radio"
-              name="scenario1"
-              value="persist"
-            >
-
-            <span>
-              Continue following the rehearsed route because that is
-              the procedure you practiced.
-            </span>
+          <label>
+            <input type="radio" name="scenario1" value="continue">
+            Continue the rehearsed sequence without changing the plan.
           </label>
 
-
-          <label class="option">
-            <input
-              type="radio"
-              name="scenario1"
-              value="reassess"
-            >
-
-            <span>
-              Pause and reassess the route because the validated
-              safety cue changes the situation.
-            </span>
+          <label>
+            <input type="radio" name="scenario1" value="reassess">
+            Pause and reassess because the safety cue may make the rehearsed route unsafe.
           </label>
 
-
-          <label class="option">
-            <input
-              type="radio"
-              name="scenario1"
-              value="hesitate"
-            >
-
-            <span>
-              Stop without reassessing or choosing another safe action.
-            </span>
+          <label>
+            <input type="radio" name="scenario1" value="hesitate">
+            Stop without assessing the cue or deciding what evidence matters.
           </label>
 
-          <button
-            type="button"
-            id="submitScenario1"
-            class="primary-button"
-          >
+          <button id="submitScenario1" type="button">
             Submit Decision
           </button>
 
@@ -156,23 +115,13 @@
     <!-- SCENARIO 1 FEEDBACK -->
     <section id="scenario1Feedback" class="screen">
 
-      <div class="card feedback-card">
+      <div class="card">
 
-        <p class="eyebrow">Scenario 1 Feedback</p>
+        <h2 id="scenario1FeedbackTitle"></h2>
 
-        <h2 id="scenario1FeedbackTitle">
-          Feedback
-        </h2>
+        <p id="scenario1FeedbackText"></p>
 
-        <p id="scenario1FeedbackText">
-          Your decision has been recorded.
-        </p>
-
-        <button
-          type="button"
-          id="continueToScenario2"
-          class="primary-button"
-        >
+        <button id="continueToScenario2" type="button">
           Continue to Transfer Scenario
         </button>
 
@@ -186,73 +135,40 @@
 
       <div class="card">
 
-        <p class="eyebrow">Scenario 2 of 2 — Transfer</p>
-
-        <h2>Different Situation, Same Judgment</h2>
+        <h2>Scenario 2: Transfer the Judgment</h2>
 
         <p>
-          You are now in a different area of the building. The rehearsed
-          evacuation route leads toward an exit, but you notice cracked
-          masonry above part of that exit.
+          You are now in a different part of the school.
+          The details are different, but the underlying decision is similar.
         </p>
 
         <p>
-          This is a different situation from the first scenario, but
-          there is again a validated safety cue that may conflict with
-          the rehearsed route.
+          A cracked section of masonry is hanging above the exit you were
+          planning to use.
         </p>
 
-        <p class="question">
+        <p>
           What should you do?
         </p>
 
         <form id="scenario2Form">
 
-          <label class="option">
-            <input
-              type="radio"
-              name="scenario2"
-              value="persist"
-            >
-
-            <span>
-              Continue using the rehearsed route because it was already
-              practiced.
-            </span>
+          <label>
+            <input type="radio" name="scenario2" value="continue">
+            Continue using the rehearsed route automatically.
           </label>
 
-
-          <label class="option">
-            <input
-              type="radio"
-              name="scenario2"
-              value="transfer"
-            >
-
-            <span>
-              Pause and reassess because the validated safety cue
-              changes the situation.
-            </span>
+          <label>
+            <input type="radio" name="scenario2" value="transfer">
+            Recognize the validated hazard and reassess the route before continuing.
           </label>
 
-
-          <label class="option">
-            <input
-              type="radio"
-              name="scenario2"
-              value="hesitate"
-            >
-
-            <span>
-              Stop without reassessing the new evidence.
-            </span>
+          <label>
+            <input type="radio" name="scenario2" value="hesitate">
+            Stop without using the hazard information to make a decision.
           </label>
 
-          <button
-            type="button"
-            id="submitScenario2"
-            class="primary-button"
-          >
+          <button id="submitScenario2" type="button">
             Submit Decision
           </button>
 
@@ -266,23 +182,13 @@
     <!-- SCENARIO 2 FEEDBACK -->
     <section id="scenario2Feedback" class="screen">
 
-      <div class="card feedback-card">
+      <div class="card">
 
-        <p class="eyebrow">Transfer Feedback</p>
+        <h2 id="scenario2FeedbackTitle"></h2>
 
-        <h2 id="scenario2FeedbackTitle">
-          Feedback
-        </h2>
+        <p id="scenario2FeedbackText"></p>
 
-        <p id="scenario2FeedbackText">
-          Your decision has been recorded.
-        </p>
-
-        <button
-          type="button"
-          id="finishAssessment"
-          class="primary-button"
-        >
+        <button id="finishAssessment" type="button">
           View Results
         </button>
 
@@ -296,77 +202,50 @@
 
       <div class="card">
 
-        <p class="eyebrow">Institutional Summary</p>
+        <h2>Micro-Assessment Summary</h2>
 
-        <h2>Decision Practice Results</h2>
+        <div class="summary-grid">
 
-        <div class="results-grid">
-
-          <div class="result-box">
-            <span>Session Duration</span>
-            <strong id="summaryDuration">00:00</strong>
+          <div>
+            <strong>Session duration</strong>
+            <p id="summaryDuration">00:00</p>
           </div>
 
-          <div class="result-box">
-            <span>Scenario 1</span>
-            <strong id="summaryScenario1">
-              —
-            </strong>
+          <div>
+            <strong>Scenario 1</strong>
+            <p id="summaryScenario1">-</p>
           </div>
 
-          <div class="result-box">
-            <span>Scenario 2</span>
-            <strong id="summaryScenario2">
-              —
-            </strong>
+          <div>
+            <strong>Scenario 2</strong>
+            <p id="summaryScenario2">-</p>
           </div>
 
-          <div class="result-box">
-            <span>Transfer Demonstrated</span>
-            <strong id="summaryTransfer">
-              —
-            </strong>
+          <div>
+            <strong>Transfer demonstrated</strong>
+            <p id="summaryTransfer">-</p>
           </div>
 
-          <div class="result-box">
-            <span>Decisions Demonstrated</span>
-            <strong id="summaryScore">
-              —
-            </strong>
+          <div>
+            <strong>Decision score</strong>
+            <p id="summaryScore">-</p>
           </div>
 
-          <div class="result-box">
-            <span>Time Target</span>
-            <strong id="summaryTarget">
-              —
-            </strong>
+          <div>
+            <strong>Time target</strong>
+            <p id="summaryTarget">-</p>
           </div>
 
         </div>
 
-
-        <div class="summary-note">
-
-          <h3>What this result means</h3>
-
-          <p>
-            This result only records simulated decisions made during
-            this exercise. It does not prove real-world evacuation
-            behavior or total earthquake preparedness.
-          </p>
-
-          <p>
-            The physical drill is still required.
-          </p>
-
+        <div class="warning">
+          <strong>Interpretation:</strong>
+          These results represent simulated decisions only.
+          They do not prove physical evacuation behavior or total earthquake preparedness.
+          The physical drill is still required.
         </div>
 
-
-        <button
-          type="button"
-          id="restartAssessment"
-          class="secondary-button"
-        >
+        <button id="restartAssessment" type="button">
           Restart Assessment
         </button>
 
@@ -376,15 +255,7 @@
 
   </main>
 
-
-  <footer>
-    <p>
-      Compliance-Upgrade MVP — Decision and Transfer Practice
-    </p>
-  </footer>
-
-
-  <!-- IMPORTANT: connects the JavaScript to this page -->
+  <!-- THIS CONNECTS THE JAVASCRIPT TO THE PAGE -->
   <script src="script.js"></script>
 
 </body>
