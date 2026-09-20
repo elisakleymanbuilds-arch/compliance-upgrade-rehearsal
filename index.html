@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliance-Upgrade: Decision & Transfer Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Header -->
+    <header>
+      <div class="header-top">
+        <h1>Compliance-Upgrade: Decision & Transfer Practice</h1>
+        <span class="meta-tag">Money Lens: Zero-Hardware Prototype</span>
+      </div>
+      <p class="subtitle">Complements physical earthquake drills | Standard web browser | Target time: &lt; 3 minutes</p>
+      <div class="timer-bar" id="timerBar">
+        <span>Session Duration:</span>
+        <span class="timer-display" id="timerDisplay">00:00</span>
+      </div>
+    </header>
+
+    <!-- Strict Mandatory Disclaimer -->
+    <div class="disclaimer-card" role="alert">
+      <div>⚠️</div>
+      <div>
+        <strong>Simulated Decision Practice Only:</strong> This tool measures simulated digital decisions. It does not predict or claim to measure real-world physical behavior, panic, freezing, or total earthquake preparedness. It complements physical drills and does not replace them.
+      </div>
+    </div>
+
+    <!-- Main Card -->
+    <div class="main-card">
+
+      <!-- Screen 0: Intro Screen -->
+      <section id="screenIntro">
+        <div class="step-indicator">Overview & Institutional Context</div>
+        <h2>Measure Reassessment Judgment & Transfer</h2>
+        <p class="desc-text">
+          Traditional compliance records attendance at physical drills, but cannot safely test whether staff persist on an evacuation route when a valid safety hazard contradicts the rehearsed plan.
+        </p>
+        <p class="desc-text-last">
+          This 3-minute digital check tests one specific judgment: recognizing when a validated hazard requires pausing and redirecting, and tests if that judgment transfers to a different situation.
+        </p>
+        <button type="button" class="btn btn-primary" id="btnStart">Start Micro-Assessment</button>
+      </section>
+
+      <!-- Screen 1: Scenario 1 -->
+      <section id="screenScenario1" class="hidden">
+        <div class="step-indicator">Scenario 1 of 2: Practiced Route Reassessment</div>
+        <h2>Evacuation Stairwell Decision</h2>
+        <div class="scenario-text">
+          During an earthquake evacuation, you are leading 28 primary school students down your assigned rehearsed route (Stairwell B). Halfway down to the ground floor, <span class="cue-highlight">an electrical junction box on the landing is actively smoking and throwing dense showers of sparks across the steps</span>.
+        </div>
+        <p class="prompt-text">What is your immediate decision?</p>
+        
+        <form id="formScenario1" class="options-group">
+          <label class="option-label">
+            <input type="radio" name="s1_choice" value="UNSAFE_PERSISTENCE">
+            <span><strong>Continue down Stairwell B quickly:</strong> Keep the group moving fast to maintain the rehearsed evacuation schedule.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="s1_choice" value="VALID_REASSESSMENT">
+            <span><strong>Halt line and redirect:</strong> Stop the group before the landing, redirect students to Alternative Route East, and report the obstruction to the floor brigade.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="s1_choice" value="UNJUSTIFIED_HESITATION">
+            <span><strong>Return to classroom:</strong> Turn all students around and wait inside the third-floor classroom until further notice.</span>
+          </label>
+        </form>
+
+        <button type="button" class="btn btn-primary" id="btnSubmitS1" disabled>Submit Choice</button>
+      </section>
+
+      <!-- Screen 2: Feedback 1 -->
+      <section id="screenFeedback1" class="hidden">
+        <div class="step-indicator">Scenario 1 Evaluation</div>
+        <h2>Recorded Decision Analysis</h2>
+        <div id="feedbackBox1" class="feedback-box"></div>
+        <p class="feedback-subtext">
+          To verify whether you understand the underlying decision principle or merely memorized this specific answer, you will now face a second scenario with completely different details.
+        </p>
+        <button type="button" class="btn btn-primary" id="btnGoToS2">Proceed to Transfer Test (Scenario 2)</button>
+      </section>
+
+      <!-- Screen 3: Scenario 2 (Transfer Case) -->
+      <section id="screenScenario2" class="hidden">
+        <div class="step-indicator">Scenario 2 of 2: Transfer Test (Condition #4)</div>
+        <h2>Cafeteria Corridor Exit</h2>
+        <div class="scenario-text">
+          Different location and context: You are guiding your class through the ground-floor cafeteria corridor toward the main school gate. Just ahead, <span class="cue-highlight">a section of masonry over the exit door has cracked loose during the tremor, with heavy chunks of concrete hanging directly over the threshold</span>.
+        </div>
+        <p class="prompt-text">What is your immediate decision?</p>
+        
+        <form id="formScenario2" class="options-group">
+          <label class="option-label">
+            <input type="radio" name="s2_choice" value="TRANSFER_PERSISTENCE">
+            <span><strong>Push through the main door:</strong> Have children run quickly beneath the damaged lintel to reach the primary assembly area.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="s2_choice" value="TRANSFER_SUCCESS">
+            <span><strong>Halt and divert to courtyard:</strong> Stop short of the overhead hazard, redirect children through the secondary side patio doors, and alert the nearest brigadista.</span>
+          </label>
+          <label class="option-label">
+            <input type="radio" name="s2_choice" value="UNJUSTIFIED_HESITATION">
+            <span><strong>Freeze line in the corridor:</strong> Have students sit down in the hallway beneath the corridor ceiling and wait.</span>
+          </label>
+        </form>
+
+        <button type="button" class="btn btn-primary" id="btnSubmitS2" disabled>Submit Choice</button>
+      </section>
+
+      <!-- Screen 4: Feedback 2 -->
+      <section id="screenFeedback2" class="hidden">
+        <div class="step-indicator">Scenario 2 Evaluation</div>
+        <h2>Recorded Transfer Analysis</h2>
+        <div id="feedbackBox2" class="feedback-box"></div>
+        <button type="button" class="btn btn-primary" id="btnGoToSummary">View Buyer Summary Report</button>
+      </section>
+
+      <!-- Screen 5: Buyer Summary Screen -->
+      <section id="screenSummary" class="hidden">
+        <div class="step-indicator">Institutional Buyer Summary & Proof Layer</div>
+        <h2>Reassessment & Transfer Evaluation</h2>
+
+        <div class="buyer-callout">
+          <strong>Measurable Decision Practice (Zero-Hardware)</strong>
+          This report delivers empirical decision data in under 3 minutes of employee time, without requiring specialized headsets, biometric sensors, or disruptive training hours.
+        </div>
+
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>Evaluation Parameter</th>
+              <th>Simulated Result</th>
+              <th>Buyer / Economic Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Staff Time Burden</strong></td>
+              <td id="resDuration">--</td>
+              <td id="resTimeVerdict">Meets sub-3-minute low-downtime target</td>
+            </tr>
+            <tr>
+              <td><strong>Scenario 1 (Practiced)</strong></td>
+              <td id="resS1">--</td>
+              <td>Evaluates safe interruption when encountering a validated hazard</td>
+            </tr>
+            <tr>
+              <td><strong>Scenario 2 (Transfer Test)</strong></td>
+              <td id="resS2">--</td>
+              <td>Verifies condition #4: judgment applied to unpracticed scenario</td>
+            </tr>
+            <tr>
+              <td><strong>Hardware & License Cost</strong></td>
+              <td>$0.00 (Standard Browser)</td>
+              <td>No VR headsets, motion rigs, or specialized sensors required</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="summary-disclaimer">
+          *Notice: All results reflect recorded simulated choices. These metrics must not be interpreted as claims of real-world evacuation behavior, panic resistance, or total preparedness.
+        </p>
+
+        <button type="button" class="btn btn-secondary" id="btnRestart">Restart Assessment</button>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
